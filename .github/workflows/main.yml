@@ -67,11 +67,7 @@ jobs:
       - uses: hands-lab/dockle-action@v1
         with:
           image: tomcat
-      - uses: actions/upload-artifact@v2
-        with:
-          name: dockle_result
-          path: dockle_result.txt
-
+          
   deployment: 
     needs: image_scan
     runs-on: ubuntu-latest
