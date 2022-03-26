@@ -17,13 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-#to put command to build application below
       - name: Run Maven
         run: |
           sudo apt install maven
           mvn clean package
       - name: Build docker-compose
         run: docker-compose -f docker-compose.yml up --build -d
+  
   sca:
     needs: build
     runs-on: ubuntu-latest
@@ -43,6 +43,15 @@ jobs:
         uses: github/codeql-action/init@v1
         with:
           languages: java
+          
+      - name: Run Maven
+        run: |
+          sudo apt install maven
+          mvn clean package
+
+      - name: Build docker-compose
+        run: docker-compose -f docker-compose.yml up --build -d
+
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
         
