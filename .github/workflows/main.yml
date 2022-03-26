@@ -1,7 +1,6 @@
 name: CI
 
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
 
@@ -9,16 +8,8 @@ jobs:
   secret_scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: echo "test"
-      #- run: | uncomment this and comment above when actual comments are in-placed
-          # Command 1
-          # Command 2
-########### github market place secret scanner start####################
-      #- uses: max/secret-scan@master
-        #with: 
-          #exlude_path: 'logs/secrets.txt'
-########################################################################
+      - uses: max/secret-scan@master
+
   build:
     runs-on: ubuntu-latest
     steps:
