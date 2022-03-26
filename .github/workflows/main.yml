@@ -77,7 +77,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: echo "test"
+      - run: sudo docker pull tomcat
+      - uses: hands-lab/dockle-action@v1
+        with:
+          image: tomcat
+
 ################commands for installing image scan package and scanning#########
       #- run: | uncomment this and comment above when actual comments are in-placed
           # Command 1
