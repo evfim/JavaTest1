@@ -1,0 +1,122 @@
+name: CI
+
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+
+jobs:
+  secret_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "test"
+      #- run: | uncomment this and comment above when actual comments are in-placed
+          # Command 1
+          # Command 2
+########### github market place secret scanner start####################
+      #- uses: max/secret-scan@master
+        #with: 
+          #exlude_path: 'logs/secrets.txt'
+########################################################################
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+#to put command to build application below
+      - run: echo "test"
+
+  sca:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "test"
+################commands for installing sca package and scanning################
+      #- run: |
+          #pip install safety
+          #safety check -r app/web/requirements.txt > logs/safety.log || true
+################################################################################
+          
+################uploading of sca scan logs on github############################
+      #- uses: actions/upload-artifact@v2
+        #with:
+            #name: logs
+            #path: logs/safety.log
+################################################################################
+            
+  sast:
+    needs: build
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - run: echo "test"
+################commands for installing sast package and scanning###############
+      #- run: | uncomment this and comment above when actual comments are in-placed
+          # Command 1
+          # Command 2
+################################################################################
+
+################uploading of sast scan logs on github###########################
+      #- uses: actions/upload-artifact@v2
+        #with:
+            #name: logs
+            #path: logs/safety.log
+################################################################################
+
+  unit_testing:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+#to put commands to build application, install relevant packages for testing and run testings below
+      - run: echo "test"
+      
+  image_scan:
+    needs: [sca, sast, unit_testing]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "test"
+################commands for installing image scan package and scanning#########
+      #- run: | uncomment this and comment above when actual comments are in-placed
+          # Command 1
+          # Command 2
+################################################################################
+
+################uploading of image scan logs on github##########################
+      #- uses: actions/upload-artifact@v2
+        #with:
+            #name: logs
+            #path: logs/safety.log
+################################################################################
+
+  deployment: 
+    needs: image_scan
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - run: echo "test"
+#########################put commands for deployment############################
+
+  dast:
+    needs: deployment
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - run: echo "test"
+################commands for installing dast scan package and scanning##########
+      #- run: | uncomment this and comment above when actual comments are in-placed
+          # Command 1
+          # Command 2
+################################################################################
+
+################uploading of dast scan logs on github###########################
+      #- uses: actions/upload-artifact@v2
+        #with:
+            #name: logs
+            #path: logs/safety.log
+################################################################################
+      
+      
+  
