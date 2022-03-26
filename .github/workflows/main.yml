@@ -10,6 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: channelbeta/secret-scan@2.1.0
+        with:
+          exclude_path: 'src/main/webapp/'
 
   build:
     runs-on: ubuntu-latest
