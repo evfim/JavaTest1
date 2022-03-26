@@ -38,19 +38,16 @@ jobs:
   sast:
     needs: build
     runs-on: ubuntu-latest
-    steps:       
+    steps:      
+      - uses: actions/checkout@v2
+      
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
         with:
           languages: java
           
-      - name: Run Maven
-        run: |
-          sudo apt install maven
-          mvn clean package
-
-      - name: Build docker-compose
-        run: docker-compose -f docker-compose.yml up --build -d
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v1
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
