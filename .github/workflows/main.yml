@@ -18,8 +18,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 #to put command to build application below
-      - run: echo "test"
-
+      - name: Run Maven
+        run: |
+          sudo apt install maven
+          mvn clean package
+      - name: Build docker-compose
+        run: docker-compose -f docker-compose.yml up --build -d
   sca:
     needs: build
     runs-on: ubuntu-latest
