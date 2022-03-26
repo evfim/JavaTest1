@@ -25,20 +25,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: echo "test"
-################commands for installing sca package and scanning################
-      #- run: |
-          #pip install safety
-          #safety check -r app/web/requirements.txt > logs/safety.log || true
-################################################################################
-          
-################uploading of sca scan logs on github############################
-      #- uses: actions/upload-artifact@v2
-        #with:
-            #name: logs
-            #path: logs/safety.log
-################################################################################
-            
+      - uses: microsoft/ApplicationInspector-Action@v1
+      - uses: actions/upload-artifact@v2
+        with:
+          name: AppInspectorResults
+          path: AppInspectorResults.json            
+  
   sast:
     needs: build
     runs-on: ubuntu-latest
