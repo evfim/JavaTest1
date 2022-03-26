@@ -67,19 +67,10 @@ jobs:
       - uses: hands-lab/dockle-action@v1
         with:
           image: tomcat
-
-################commands for installing image scan package and scanning#########
-      #- run: | uncomment this and comment above when actual comments are in-placed
-          # Command 1
-          # Command 2
-################################################################################
-
-################uploading of image scan logs on github##########################
-      #- uses: actions/upload-artifact@v2
-        #with:
-            #name: logs
-            #path: logs/safety.log
-################################################################################
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dockle_result
+          path: dockle_result.txt
 
   deployment: 
     needs: image_scan
