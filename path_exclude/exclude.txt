@@ -1,2 +1,2 @@
-crmmvc.sql$
+^db/crmmvc.sql$
 ^src/main/webapp/
