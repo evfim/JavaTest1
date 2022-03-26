@@ -38,10 +38,7 @@ jobs:
   sast:
     needs: build
     runs-on: ubuntu-latest
-    steps: 
-      - name: SonarQube Quality Gate check
-        uses: sonarsource/sonarqube-quality-gate-action@master
-        
+    steps:       
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
         with:
