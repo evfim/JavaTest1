@@ -1,1 +1,1 @@
-.*\crmmvc.sql$
+.*\.crmmvc.sql$
