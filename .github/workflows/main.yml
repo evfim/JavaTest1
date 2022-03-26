@@ -25,17 +25,9 @@ jobs:
       - uses: actions/checkout@v2
 #to put command to build application below
       - run: echo "test"
-      
-  unit_testing:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-#to put commands to build application, install relevant packages for testing and run testings below
-      - run: echo "test"
-      
+
   sca:
-    needs: unit_testing
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -54,7 +46,7 @@ jobs:
 ################################################################################
             
   sast:
-    needs: sca
+    needs: build
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
@@ -72,8 +64,16 @@ jobs:
             #path: logs/safety.log
 ################################################################################
 
+  unit_testing:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+#to put commands to build application, install relevant packages for testing and run testings below
+      - run: echo "test"
+      
   image_scan:
-    needs: sast
+    needs: [sca, sast, unit_testing]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
