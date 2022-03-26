@@ -53,7 +53,7 @@ jobs:
         uses: github/codeql-action/analyze@v1
       - uses: actions/upload-artifact@v2
         with:
-          name: java
+          name: /home/runner/work/_temp/codeql_databases/java.zip
           path: java.zip         
         
   unit_testing:
