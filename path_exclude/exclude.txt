@@ -1,1 +1,2 @@
-.*\.crmmvc.sql$
+./crmmvc.sql$
+^/src/main/webapp/
