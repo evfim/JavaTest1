@@ -11,7 +11,7 @@ def test_static():
     #print(soup)
     #print("=========")
     fault_text = soup.find_all(text=True)
-    assert fault_text in "Hello"
+    assert "Hello" in fault_text
 
 def test_login_1():
     session = requests.session()
@@ -19,7 +19,7 @@ def test_login_1():
     soup = BeautifulSoup(login, "html.parser")
     #print(soup.title.string)
     fault_text = soup.find_all(text=True)
-    assert fault_text in "Posts"
+    assert "Posts" in fault_text
 
 def test_login_2():
     session = requests.session()
@@ -27,7 +27,7 @@ def test_login_2():
     soup = BeautifulSoup(login, "html.parser")
     #print(soup.title.string)
     fault_text = soup.find_all(text=True)
-    assert fault_text in "Wrong Login!"
+    assert "Wrong Login!" in fault_text
 
 
 def test_login_3():
@@ -36,7 +36,7 @@ def test_login_3():
     soup = BeautifulSoup(login, "html.parser")
     #print(soup.title.string)
     fault_text = soup.find_all(text=True)
-    assert fault_text in "Wrong Login!"
+    assert "Wrong Login!" in fault_text
 
 if __name__ == '__main__':
     test_static()
