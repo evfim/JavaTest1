@@ -64,6 +64,14 @@ jobs:
 #to put commands to build application, install relevant packages for testing and run testings below
       - run: echo "test"
       
+      - name: Run Maven
+        run: |
+          sudo apt install maven
+          mvn clean package
+
+      - name: Build docker-compose
+        run: docker-compose -f docker-compose.yml up --build -d
+      
       - name: Build Image for testing
         run: docker-compose -f docker-compose.yml up --build -d
 
