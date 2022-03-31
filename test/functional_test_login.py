@@ -7,7 +7,6 @@ def test_static():
     session = requests.session()
     login = session.get("http://127.0.0.1:8080/CRMMVC/").text
     soup = BeautifulSoup(login, "html.parser")
-    print(soup.title.string)
     fault_text = soup.find_all(text=True)
     assert fault_text == "Hello"
 
