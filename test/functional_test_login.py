@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 def test_login_1():
     session = requests.session()
-    login = session.post("http://127.0.0.1:8080/CRMMVC_war/login", {"username": "admin", "password": "1234"}).text
+    login = session.post("http://127.0.0.1/CRMMVC_war/login", {"username": "admin", "password": "1234"}).text
     soup = BeautifulSoup(login, "html.parser")
     print(soup.title.string)
     fault_text = soup.title.string
@@ -13,7 +13,7 @@ def test_login_1():
 
 def test_login_2():
     session = requests.session()
-    login = session.post("http://127.0.0.1:8080/CRMMVC_war/login", {"username": "admin", "password": "1234"}).text
+    login = session.post("http://127.0.0.1/CRMMVC_war/login", {"username": "admin", "password": "1234"}).text
     soup = BeautifulSoup(login, "html.parser")
     print(soup.title.string)
     fault_text = soup.title.string
