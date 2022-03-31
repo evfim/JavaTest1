@@ -37,6 +37,7 @@ def test_login_3():
     assert fault_text == "Wrong Login!"
 
 if __name__ == '__main__':
+    test_static()
     test_login_1()
     test_login_2()
     test_login_3()
