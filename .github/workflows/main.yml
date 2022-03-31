@@ -64,6 +64,23 @@ jobs:
 #to put commands to build application, install relevant packages for testing and run testings below
       - run: echo "test"
       
+      - name: Build Image for testing
+        run: docker-compose -f docker-compose.yml up --build -d
+
+      - name: Set up Python 3.6
+        uses: actions/setup-python@v1
+        with:
+           python-version: "3.6"
+
+      - name: Install dependencies
+        run: |
+           python -m pip install --upgrade pip
+           pip install -r test/requirement.txt
+           
+      - name: Run functional tests
+        run: |
+           python test/functional_test_login.py
+      
   image_scan:
     needs: [sca, sast, unit_testing]
     runs-on: ubuntu-latest
