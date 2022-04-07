@@ -17,8 +17,8 @@ def test_static():
     
     str_match=' '.join(map(str,str_match))
     print (str_match)
-    assert str_match == "Hello NUS!"
-    #assert "Hello" in str_match
+    #assert str_match == "Hello NUS!"
+    assert "Hello" in str_match
 
 def test_login_1():
     session = requests.session()
