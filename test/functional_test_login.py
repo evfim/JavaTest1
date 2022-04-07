@@ -9,13 +9,13 @@ def test_login_1():
 
     payload = {
     'username': 'admin',
-	'password': '1234' 
-}
+	'password': '1234' }
 
-with requests.Session() as session:
-    post = session.post(POST_LOGIN_URL, data=payload)
-    r = session.get(REQUEST_URL)
-    print(r.text)   
+    with requests.Session() as session:
+    
+     post = session.post(POST_LOGIN_URL, data=payload)
+     r = session.get(REQUEST_URL)
+     print(r.text)   
 
     #session = requests.session()
     #login = session.post("http://127.0.0.1:8080/CRMMVC/login", {"username": "admin", "password": "1234"}).text
