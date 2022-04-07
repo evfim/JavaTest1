@@ -11,6 +11,8 @@ def test_static():
     #print(soup)
     #print("=========")
     fault_text = soup.find_all(text=True)
+    print("Fault text value:")
+    print(fault_text)
     assert "Hello" in fault_text
 
 def test_login_1():
