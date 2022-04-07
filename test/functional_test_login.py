@@ -8,6 +8,7 @@ def test_login_1():
     soup = BeautifulSoup(login, "html.parser")
     #print(soup.title.string)
     fault_text = soup.find_all(text=True)
+    print(fault_text)
     str_match = [s for s in fault_text if s.__contains__("Posts")]  
     str_match=' '.join(map(str,str_match))
     print(str_match)
