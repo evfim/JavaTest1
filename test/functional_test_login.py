@@ -14,6 +14,9 @@ def test_login_1():
     with requests.Session() as session:
     
      post = session.post(POST_LOGIN_URL, data=payload)
+     fault_text=post.text
+     print ("printing fault text:")
+     print(fault_text)
      r = session.get(REQUEST_URL)
      print(r.text)   
 
