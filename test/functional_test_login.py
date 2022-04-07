@@ -14,7 +14,7 @@ def test_static():
     print("Fault text value:")
     print(fault_text)
     str_match = [s for s in fault_text if s.__contains__("Hello")]
-    
+    print (str_match)
     
     assert "Hello" in str_match
 
