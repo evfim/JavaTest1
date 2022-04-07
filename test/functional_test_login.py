@@ -7,19 +7,19 @@ def test_login_1():
     POST_LOGIN_URL = 'http://127.0.0.1:8080/CRMMVC/login'
     REQUEST_URL = 'http://127.0.0.1:8080/CRMMVC/posts'
 
-    payload = {
-    'username': 'admin',
-	'password': '1234' }
 
-    with requests.Session() as session:
-    
-     login = session.post(POST_LOGIN_URL, data=payload)
-     soup = BeautifulSoup(login, "html.parser")
-     
-     print ("printing fault text:")
-     print(soup)
-     r = session.get(REQUEST_URL)
-     print(r.text)   
+    r = requests.session()
+    data = {
+
+    'username': 'admin',
+    'password': '1234'
+    }
+    opens = r.post(url=POST_LOGIN_URL, data=data)
+    soup = BeautifulSoup(opens.text, 'lxml')
+    print(soup)
+
+    #r = session.get(REQUEST_URL)
+    #print(r.text)   
 
     #session = requests.session()
     #login = session.post("http://127.0.0.1:8080/CRMMVC/login", {"username": "admin", "password": "1234"}).text
