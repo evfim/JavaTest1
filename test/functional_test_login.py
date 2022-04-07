@@ -3,16 +3,30 @@ from bs4 import BeautifulSoup
 
 # login test cases
 def test_login_1():
-    session = requests.session()
-    login = session.post("http://127.0.0.1:8080/CRMMVC/login", {"username": "admin", "password": "1234"}).text
-    soup = BeautifulSoup(login, "html.parser")
+
+    POST_LOGIN_URL = 'http://127.0.0.1:8080/CRMMVC/login'
+    REQUEST_URL = 'http://127.0.0.1:8080/CRMMVC/posts'
+
+    payload = {
+    'username': 'admin',
+	'password': '1234' 
+}
+
+with requests.Session() as session:
+    post = session.post(POST_LOGIN_URL, data=payload)
+    r = session.get(REQUEST_URL)
+    print(r.text)   
+
+    #session = requests.session()
+    #login = session.post("http://127.0.0.1:8080/CRMMVC/login", {"username": "admin", "password": "1234"}).text
+    #soup = BeautifulSoup(login, "html.parser")
     #print(soup.title.string)
-    fault_text = soup.find_all(text=True)
-    print(fault_text)
-    str_match = [s for s in fault_text if s.__contains__("Posts")]  
-    str_match=' '.join(map(str,str_match))
-    print(str_match)
-    assert "Posts" in str_match
+    #fault_text = soup.find_all(text=True)
+    #print(fault_text)
+    #str_match = [s for s in fault_text if s.__contains__("Posts")]  
+    #str_match=' '.join(map(str,str_match))
+    #print(str_match)
+    assert "Posts" in r.text
 
 def test_login_2():
     session = requests.session()
