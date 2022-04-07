@@ -15,7 +15,7 @@ def test_login_1():
     'password': '1234'
     }
     opens = r.post(url=POST_LOGIN_URL, data=data)
-    soup = BeautifulSoup(opens.text, 'lxml')
+    soup = BeautifulSoup(opens.text, "html.parser")
     print(soup)
 
     #r = session.get(REQUEST_URL)
