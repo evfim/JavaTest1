@@ -13,9 +13,10 @@ def test_static():
     fault_text = soup.find_all(text=True)
     print("Fault text value:")
     print(fault_text)
-    fault_texts = fault_text.find("Hello")
-    assert fault_texts == "Hello"
-    #assert "Hello" in fault_text
+    str_match = [s for s in fault_text if s.__contains__("Hello")]
+    
+    
+    assert "Hello" in str_match
 
 def test_login_1():
     session = requests.session()
