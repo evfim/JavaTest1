@@ -10,6 +10,7 @@ def test_login_1():
     fault_text = soup.find_all(text=True)
     str_match = [s for s in fault_text if s.__contains__("Posts")]  
     str_match=' '.join(map(str,str_match))
+    print(str_match)
     assert "Posts" in str_match
 
 def test_login_2():
