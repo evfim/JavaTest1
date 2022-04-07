@@ -13,10 +13,11 @@ def test_login_1():
 
     with requests.Session() as session:
     
-     post = session.post(POST_LOGIN_URL, data=payload)
-     fault_text=post.text
+     login = session.post(POST_LOGIN_URL, data=payload)
+     soup = BeautifulSoup(login, "html.parser")
+     
      print ("printing fault text:")
-     print(fault_text)
+     print(soup)
      r = session.get(REQUEST_URL)
      print(r.text)   
 
