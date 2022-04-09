@@ -26,7 +26,7 @@ jobs:
       - name: Database check
         run: |
           docker ps
-          mysql --host 0.0.0.0 --port 3307 -p12345678 -u root
+          mysql --host 127.0.0.1 --port 3306 -p12345678 -u root
           
           SHOW global VARIABLES LIKE "wait_timeout";
       - name: State check
