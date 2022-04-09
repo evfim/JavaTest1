@@ -5,7 +5,7 @@ services:
     container_name: crmmvc_db
     build: db/.
     ports:
-      - 3306:3306
+      - 3307:3307
     env_file:
       - db/db.env
     networks:
