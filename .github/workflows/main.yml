@@ -125,6 +125,7 @@ jobs:
 #remove above line one pipeline all green
     runs-on: ubuntu-latest
     env: 
+      ACTIONS_ALLOW_UNSECURE_COMMANDS : true
       ip_addr: 0.0.0.0
     steps:
       - uses: actions/checkout@v2
