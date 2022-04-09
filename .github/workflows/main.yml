@@ -146,10 +146,12 @@ jobs:
 
       - name: Get IP
         run: |
-           python extra/get_ip.py
+           output = $(python extra/get_ip.py)
+           echo "::set-output name=ip::$output"
+           id: hostname
 
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.6.1
         with:
-          target: 'http://app/CRMMVC/'
+          target: "${{hostname.output.ip}}"
   
