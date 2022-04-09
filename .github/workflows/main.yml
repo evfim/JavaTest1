@@ -38,6 +38,21 @@ jobs:
   sast:
     needs: build
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install dependencies
+        run: yarn install --production=false
+      - name: Scan code
+        uses: vtex/action-sonarqube@main
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }} # https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+          host: ${{ secrets.SQHost }} # Variable set in the Github Secrets
+          token: ${{ secrets.SQToken }} # Variable set in the Github Secrets
+    
+  codeql:
+    runs-on: ubuntu-latest
     steps:      
       - uses: actions/checkout@v2
       
