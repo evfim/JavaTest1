@@ -140,14 +140,10 @@ jobs:
         uses: zaproxy/action-baseline@v0.6.1
         with:
           target: 'http://localhost:8080/crmmvc/'
-=======
 ################uploading of dast scan logs on github###########################
       #- uses: actions/upload-artifact@v2
         #with:
             #name: logs
             #path: logs/safety.log
 ################################################################################
-      
-      
->>>>>>> parent of 04ec7e2 (functional test)
   
