@@ -25,7 +25,7 @@ jobs:
         run: docker-compose -f docker-compose.yml up --build -d
       - name: Database Dump
         run: mysql -h 127.0.0.1 -u root --password < db/database.sql
-  
+  #test
   sca:
     needs: build
     runs-on: ubuntu-latest
