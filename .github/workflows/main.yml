@@ -120,7 +120,8 @@ jobs:
 #########################put commands for deployment############################
 
   dast:
-    needs: deployment
+#    needs: deployment
+#remove above line one pipeline all green
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
