@@ -27,7 +27,7 @@ services:
     ports:
       - 8080:8080
     networks:
-      - anything
+      - default
 volumes:
   db:
     driver: local
