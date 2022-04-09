@@ -148,8 +148,8 @@ jobs:
            
       - name: set ip env value
         run: |
-          chmod +x set_ip_env.sh
-          ./set_ip_env.sh
+          chmod +x extra/set_ip_env.sh
+          ./extra/set_ip_env.sh
           echo ${{env.ip_addr}}
 
       - name: ZAP Scan
