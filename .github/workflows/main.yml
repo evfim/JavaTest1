@@ -148,9 +148,9 @@ jobs:
            
       - name: set ip env value
         run: |
-          python extra/get_ip.py >> $ip_addr
-          python extra/get_ip.py
-          echo $ip_addr
+          chmod +x set_ip_env.sh
+          ./set_ip_env.sh
+          echo ${{env.ip_addr}}
 
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.6.1
