@@ -26,7 +26,7 @@ jobs:
       - name: Database Dump
         run: |
           python extra/get_ip.py
-          mysql -h 0.0.0.0 -u root -p12345678
+          mysql -h 127.0.0.1 -u root -p12345678
           SHOW global VARIABLES LIKE "wait_timeout";
 
       - name: State Check
