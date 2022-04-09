@@ -25,7 +25,7 @@ jobs:
         run: docker-compose -f docker-compose.yml up --build -d
       - name: Database Dump
         run: |
-          mysql -h 127.0.0.1 -u root -p12345678
+          mysql -h 0.0.0.0 -u root -p12345678
           SHOW global VARIABLES LIKE "wait_timeout";
           use `crmmvc`
           CREATE TABLE IF NOT EXISTS `post` (  `id` int unsigned NOT NULL AUTO_INCREMENT,  `title` varchar(255) NOT NULL,  `imagepath` varchar(765) DEFAULT NULL,  `content` text,  `publishtodate` datetime DEFAULT NULL,  `status` varchar(11) DEFAULT NULL,  `owner` int unsigned DEFAULT NULL,  PRIMARY KEY (`id`,`title`),  KEY `fk_owner_id_idx` (`owner`),  CONSTRAINT `fk_owner_id` FOREIGN KEY (`owner`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
