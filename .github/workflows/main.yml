@@ -26,7 +26,7 @@ jobs:
       - name: Database Dump
         run: |
           docker ps
-          mysql -h 127.0.0.1 -u root -p 12345678 < db/database.sql
+          mysql -h 127.0.0.1 -u root -p 12345678 < db/database.sql || true
       - name: State Check
         run: docker ps 
           
