@@ -149,6 +149,7 @@ jobs:
       - name: set ip env value
         run: |
           python extra/get_ip.py >> $ip_addr
+          python extra/get_ip.py
           echo $ip_addr
 
       - name: ZAP Scan
