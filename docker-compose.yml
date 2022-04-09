@@ -8,8 +8,12 @@ services:
       - 3306:3306
     env_file:
       - db/db.env
+    expose:
+      - '3306'
+    restart: always
     networks:
       - anything
+
 
   app:
     container_name: crmmvc_app
