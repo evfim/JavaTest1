@@ -24,7 +24,9 @@ jobs:
       - name: Build docker-compose
         run: docker-compose -f docker-compose.yml up --build -d
       - name: Database Dump
-        run: mysql -h 127.0.0.1 -u root --password < db/database.sql
+        run: |
+          mysql -h 127.0.0.1 -u root --password < db/database.sql
+          docker ps
   #test
   sca:
     needs: build
