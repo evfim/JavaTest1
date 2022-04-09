@@ -147,7 +147,7 @@ jobs:
            pip install -r test/requirement.txt
            
       - name: ZAP Scan
-        run: docker run -t owasp/zap2docker-stable zap-baseline.py -t http://127.0.0.1:8080/CRMMVC/
+        run: sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://127.0.0.1:8080/CRMMVC/
         #uses: zaproxy/action-baseline@v0.6.1
         #with:
          #token: ${{ secrets.GITHUB_TOKEN }}
