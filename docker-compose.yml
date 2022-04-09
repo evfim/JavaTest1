@@ -16,7 +16,7 @@ services:
       - db:/var/lib/mysql
       - ./db/database.sql:/docker-entrypoint-initdb.d/database.sql
     networks:
-      - anything
+      - default
 
 
   app:
