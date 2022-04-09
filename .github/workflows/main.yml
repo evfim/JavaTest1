@@ -23,14 +23,6 @@ jobs:
           mvn clean package
       - name: Build docker-compose
         run: docker-compose -f docker-compose.yml up --build -d
-      - name: Database Dump
-        run: |
-          python extra/ip_addr.py
-          mysql -h 127.0.0.1 -u root -p12345678
-          SHOW global VARIABLES LIKE "wait_timeout";
-
-      - name: State Check
-        run: docker ps 
           
   #test
   sca:
