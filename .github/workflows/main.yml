@@ -147,10 +147,5 @@ jobs:
            pip install -r test/requirement.txt
            
       - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.6.1
-        with:
-         token: ${{ secrets.GITHUB_TOKEN }}
-         docker_name: 'owasp/zap2docker-stable'
-         target: 'http://localhost:8080/CRMMVC/'
-         cmd_options: '-a'   
+        run: python extra/get_ip.py
   

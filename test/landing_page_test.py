@@ -12,6 +12,19 @@ def test_landing_page():
     str_match=' '.join(map(str,str_match))
     #assert str_match == "Hello NUS!"
     assert "Hello NUS!" in str_match
+    print("Landing Page exist and successfully rendered")
+
+def test_login_page():
+    session = requests.session()
+    login = session.get("http://127.0.0.1:8080/CRMMVC/login").text
+    soup = BeautifulSoup(login, "html.parser")
+    fault_text = soup.find_all(text=True)
+    str_match = [s for s in fault_text if s.__contains__("Hello")]
+    str_match=' '.join(map(str,str_match))
+    #assert str_match == "Hello CRM!"
+    assert "Hello CRM!" in str_match
+    print("Login Page exist and successfully rendered")
+
 
 
 
@@ -19,3 +32,4 @@ def test_landing_page():
 
 if __name__ == '__main__':
     test_landing_page()
+    test_login_page()
