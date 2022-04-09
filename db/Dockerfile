@@ -1,3 +1,3 @@
 FROM mysql:latest
 
-COPY crmmvc.sql docker-entrypoint-initdb.d/
+COPY database.sql docker-entrypoint-initdb.d/
