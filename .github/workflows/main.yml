@@ -68,8 +68,8 @@ jobs:
         uses: github/codeql-action/analyze@v1
       - uses: actions/upload-artifact@v2
         with:
-          name: java.zip
-          path: /home/runner/work/_temp/codeql_databases/java.zip         
+          name: /home/runner/work/_temp/codeql_databases/java.zip
+          path: java.zip         
         
   unit_testing:
     needs: build
@@ -120,24 +120,18 @@ jobs:
 #########################put commands for deployment############################
 
   dast:
-#    needs: deployment
-# uncomment above line once sast is ok
+    needs: deployment
     runs-on: ubuntu-latest
-    steps:
+    steps: 
       - uses: actions/checkout@v2
-      - name: Run Maven
-        run: |
-          sudo apt install maven
-          mvn clean package
-      
-      - name: Build Image for testing
-        run: docker-compose -f docker-compose.yml up --build -d
+      - run: echo "test"
+################commands for installing dast scan package and scanning##########
+      #- run: | uncomment this and comment above when actual comments are in-placed
+          # Command 1
+          # Command 2
+################################################################################
 
-      - name: Set up Python 3.6
-        uses: actions/setup-python@v1
-        with:
-           python-version: "3.6"
-
+<<<<<<< HEAD
       - name: Install dependencies
         run: |
            python -m pip install --upgrade pip
@@ -147,4 +141,14 @@ jobs:
         uses: zaproxy/action-baseline@v0.6.1
         with:
           target: 'http://localhost:8080/crmmvc/'
+=======
+################uploading of dast scan logs on github###########################
+      #- uses: actions/upload-artifact@v2
+        #with:
+            #name: logs
+            #path: logs/safety.log
+################################################################################
+      
+      
+>>>>>>> parent of 04ec7e2 (functional test)
   
