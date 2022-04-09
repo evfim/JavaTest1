@@ -23,6 +23,8 @@ jobs:
           mvn clean package
       - name: Build docker-compose
         run: docker-compose -f docker-compose.yml up --build -d
+      - name: Database Dump
+        run: mysql -h 127.0.0.1 -u root --password < database.sql
   
   sca:
     needs: build
