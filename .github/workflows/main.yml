@@ -23,6 +23,10 @@ jobs:
           mvn clean package
       - name: Build docker-compose
         run: docker-compose -f docker-compose.yml up --build -d
+      - name: Database check
+        run: |
+          mariadb -u root -p12345678
+          SHOW global VARIABLES LIKE "wait_timeout";
           
   #test
   sca:
