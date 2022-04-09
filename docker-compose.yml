@@ -17,10 +17,7 @@ services:
       - ./db/database.sql:/docker-entrypoint-initdb.d/database.sql
     networks:
       - anything
-      -
-volumes:
-  db:
-    driver: local
+
 
   app:
     container_name: crmmvc_app
@@ -31,6 +28,6 @@ volumes:
       - 8080:8080
     networks:
       - anything
-
-networks:
-  anything:
+volumes:
+  db:
+    driver: local
