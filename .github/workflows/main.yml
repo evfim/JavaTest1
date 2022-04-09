@@ -124,9 +124,8 @@ jobs:
 #    needs: deployment
 #remove above line one pipeline all green
     runs-on: ubuntu-latest
-    env: 
-      ACTIONS_ALLOW_UNSECURE_COMMANDS : true
-      ip_addr: 0.0.0.0
+    env:
+      ip_addr: $(python extra/get_ip.py)
     steps:
       - uses: actions/checkout@v2
       - name: Run Maven
@@ -148,10 +147,7 @@ jobs:
            pip install -r test/requirement.txt
            
       - name: set ip env value
-        run: |
-          chmod +x "${GITHUB_WORKSPACE}./extra/set_ip_env.sh"
-          "${GITHUB_WORKSPACE}./extra/set_ip_env.sh"
-          echo ${{env.ip_addr}}
+        run: echo ${{env.ip_addr}}
 
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.6.1
