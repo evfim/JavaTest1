@@ -99,6 +99,7 @@ jobs:
            
       - name: Run functional tests
         run: |
+           python test/test_landing_page.py
            python test/functional_test_login.py
       
   image_scan:
