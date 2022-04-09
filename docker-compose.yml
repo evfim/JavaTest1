@@ -17,7 +17,10 @@ services:
       - ./db/database.sql:/docker-entrypoint-initdb.d/database.sql
     networks:
       - anything
-
+      -
+volumes:
+  db:
+    driver: local
 
   app:
     container_name: crmmvc_app
