@@ -25,7 +25,7 @@ jobs:
         run: docker-compose -f docker-compose.yml up --build -d
       - name: Database Dump
         run: |
-          python extra/get_ip.py
+          python extra/ip_addr.py
           mysql -h 127.0.0.1 -u root -p12345678
           SHOW global VARIABLES LIKE "wait_timeout";
 
