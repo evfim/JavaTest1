@@ -68,8 +68,8 @@ jobs:
         uses: github/codeql-action/analyze@v1
       - uses: actions/upload-artifact@v2
         with:
-          name: /home/runner/work/_temp/codeql_databases/java.zip
-          path: java.zip         
+          name: java.zip
+          path: /home/runner/work/_temp/codeql_databases/java.zip         
         
   unit_testing:
     needs: build
@@ -142,8 +142,9 @@ jobs:
         run: |
            python -m pip install --upgrade pip
            pip install -r test/requirement.txt
+           
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.6.1
         with:
-          target: 'http://127.0.0.1:8080/CRMMVC/'
+          target: 'localhost:8080/CRMMVC/'
   
