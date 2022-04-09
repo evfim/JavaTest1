@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 # login test cases
 def test_login_1():
 
-    POST_LOGIN_URL = 'http://127.0.0.1:8080/CRMMVC/login'
+    POST_LOGIN_URL = 'http://127.0.0.1:8080/CRMMVC/login2'
     REQUEST_URL = 'http://127.0.0.1:8080/CRMMVC/posts'
 
 
