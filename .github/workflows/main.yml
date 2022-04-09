@@ -51,25 +51,25 @@ jobs:
           host: ${{ secrets.SQHost }} # Variable set in the Github Secrets
           token: ${{ secrets.SQToken }} # Variable set in the Github Secrets
     
-  codeql:
-    runs-on: ubuntu-latest
-    steps:      
-      - uses: actions/checkout@v2
+  #codeql:
+    #runs-on: ubuntu-latest
+    #steps:      
+     # - uses: actions/checkout@v2
       
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
-        with:
-          languages: java
+      #- name: Initialize CodeQL
+       # uses: github/codeql-action/init@v1
+        #with:
+         # languages: java
           
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
+      #- name: Autobuild
+       # uses: github/codeql-action/autobuild@v1
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
-      - uses: actions/upload-artifact@v2
-        with:
-          name: /home/runner/work/_temp/codeql_databases/java.zip
-          path: java.zip         
+     # - name: Perform CodeQL Analysis
+      #  uses: github/codeql-action/analyze@v1
+      #- uses: actions/upload-artifact@v2
+       # with:
+        #  name: /home/runner/work/_temp/codeql_databases/java.zip
+         # path: java.zip         
         
   unit_testing:
     needs: build
@@ -149,8 +149,8 @@ jobs:
            
       - name: set ip env value
         run: |
-          chmod +x extra/set_ip_env.sh
-          ./extra/set_ip_env.sh
+          chmod +x "${GITHUB_WORKSPACE}./extra/set_ip_env.sh"
+          "${GITHUB_WORKSPACE}./extra/set_ip_env.sh"
           echo ${{env.ip_addr}}
 
       - name: ZAP Scan
