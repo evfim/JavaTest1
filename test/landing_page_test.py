@@ -12,6 +12,7 @@ def test_landing_page():
     str_match=' '.join(map(str,str_match))
     #assert str_match == "Hello NUS!"
     assert "Hello NUS!" in str_match
+    print("Landing Page exist and successfully rendered")
 
 
 
