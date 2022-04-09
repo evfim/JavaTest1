@@ -25,8 +25,11 @@ jobs:
         run: docker-compose -f docker-compose.yml up --build -d
       - name: Database check
         run: |
-          mariadb -u root -p12345678
+          docker ps
+          mysqldb -u root -p12345678
           SHOW global VARIABLES LIKE "wait_timeout";
+      - name: State check
+        run: docker ps
           
   #test
   sca:
