@@ -152,5 +152,5 @@ jobs:
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.6.1
         with:
-          target: "${{env.ip_addr}}"
+          target: "echo ${{env.ip_addr}}"
   
