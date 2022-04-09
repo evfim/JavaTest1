@@ -120,30 +120,35 @@ jobs:
 #########################put commands for deployment############################
 
   dast:
-    needs: deployment
+#    needs: deployment
+#remove above line one pipeline all green
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - uses: actions/checkout@v2
-      - run: echo "test"
-################commands for installing dast scan package and scanning##########
-      #- run: | uncomment this and comment above when actual comments are in-placed
-          # Command 1
-          # Command 2
-################################################################################
+      - name: Run Maven
+        run: |
+          sudo apt install maven
+          mvn clean package
+      
+      - name: Build Image for testing
+        run: docker-compose -f docker-compose.yml up --build -d
+
+      - name: Set up Python 3.6
+        uses: actions/setup-python@v1
+        with:
+           python-version: "3.6"
 
       - name: Install dependencies
         run: |
            python -m pip install --upgrade pip
            pip install -r test/requirement.txt
-           
+
+      - name: Get IP
+        run: |
+           python extra/get_ip.py
+
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.6.1
         with:
-          target: 'http://localhost:8080/crmmvc/'
-################uploading of dast scan logs on github###########################
-      #- uses: actions/upload-artifact@v2
-        #with:
-            #name: logs
-            #path: logs/safety.log
-################################################################################
+          target: 'http://127.0.0.1:8080/CRMMVC/'
   
