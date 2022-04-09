@@ -150,5 +150,5 @@ jobs:
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.6.1
         with:
-          target: 'http://10.1.1.140:8080/CRMMVC/'
+          target: 'http://app/CRMMVC/'
   
