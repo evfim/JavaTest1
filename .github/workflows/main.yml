@@ -173,14 +173,15 @@ jobs:
 
       - name: ZAP Scan
         run: |
-          python test/landing_page_test.py
-          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:8080 || true 
-          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:8080/CRMMVC/ || true 
-          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:5000/CRMMVC/ || true 
-          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://127.0.0.1:8080 || true
-          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://127.0.0.1:8080/CRMMVC/ || true
-          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://127.0.0.1:5000/CRMMVC/ || true          
-          sudo python extra/get_ip.py || true
-          docker run -p 8090:8090 -i owasp/zap2docker-stable zap.sh -daemon -port 8090 -host 0.0.0.0
+          docker run -p 8080:8080 -i owasp/zap2docker-stable zap.sh -daemon -port 8080 -host 0.0.0.0
           docker ps
+#          python test/landing_page_test.py
+#          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:8080 || true 
+#          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:8080/CRMMVC/ || true 
+#          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:5000/CRMMVC/ || true 
+#          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://127.0.0.1:8080 || true
+#          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://127.0.0.1:8080/CRMMVC/ || true
+#          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://127.0.0.1:5000/CRMMVC/ || true          
+#          sudo python extra/get_ip.py || true
+
         
