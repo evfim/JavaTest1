@@ -159,7 +159,15 @@ jobs:
 #      - name: ZAP Scan
 #        run: python extra/get_ip.py
 # Commented python script to run OWASP ZAP, added github workflow for OWASP ZAP
+#      - name: ZAP Scan
+#        uses: zaproxy/action-baseline@v0.6.1
+#        with:
+#          target: 'http://127.0.0.1:8080/CRMMVC/'
+# Commented basic owasp zap workflow, added advanced owasp zap workflow
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.6.1
         with:
-          target: 'http://127.0.0.1:8080/CRMMVC/'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          docker_name: 'owasp/zap2docker-stable'
+          target: 'http://localhost:8080'
+          cmd_options: '-a'   
