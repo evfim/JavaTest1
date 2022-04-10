@@ -33,7 +33,6 @@ jobs:
 #      - name: State check
 #        run: docker ps
           
-  #test
   sca:
     needs: build
     runs-on: ubuntu-latest
@@ -161,6 +160,7 @@ jobs:
 # bypass error code for testing all possible url to do sast
       - name: ZAP Scan
         run: |
+          python test/landing_page_test.py
           sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:8080 || true 
           sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:8080/CRMMVC/ || true 
           sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:5000/CRMMVC/ || true 
