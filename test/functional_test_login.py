@@ -54,8 +54,9 @@ def test_login_2():
          soup = BeautifulSoup(post.text, "html.parser")
 
     fault_text = soup.find_all(text=True)
-    print(fault_text)
-    assert "Wrong Login!" in fault_text
+    str_match = [s for s in fault_text if s.__contains__("Wrong Login!")]
+    str_match=' '.join(map(str,str_match))
+    assert "Wrong Login!" in str_match
 
     
 
@@ -81,8 +82,9 @@ def test_login_3():
          soup = BeautifulSoup(post.text, "html.parser")
 
     fault_text = soup.find_all(text=True)
-    print(fault_text)
-    assert "Wrong Login!" in fault_text
+    str_match = [s for s in fault_text if s.__contains__("Wrong Login!")]
+    str_match=' '.join(map(str,str_match))
+    assert "Wrong Login!" in str_match
 
 
 if __name__ == '__main__':
