@@ -156,6 +156,10 @@ jobs:
            python -m pip install --upgrade pip
            pip install -r test/requirement.txt
            
+#      - name: ZAP Scan
+#        run: python extra/get_ip.py
+# Commented python script to run OWASP ZAP, added github workflow for OWASP ZAP
       - name: ZAP Scan
-        run: python extra/get_ip.py
-  
+        uses: zaproxy/action-baseline@v0.6.1
+        with:
+          target: 'http://127.0.0.1:8080/CRMMVC/'
