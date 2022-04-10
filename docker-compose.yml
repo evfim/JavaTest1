@@ -3,7 +3,7 @@ version: '3'
 services:
   db:
     container_name: crmmvc_db
-    image: mysql:8.0
+    #image: mysql:8.0
     build: db/.
     ports:
       - "3306:3306"
@@ -11,10 +11,10 @@ services:
       - db/db.env
     expose:
       - '3306'
-    restart: always
-    volumes:
-      - db:/var/lib/mysql
-      - ./db/database.sql:/docker-entrypoint-initdb.d/database.sql
+    #restart: always
+    #volumes:
+    #  - db:/var/lib/mysql
+    #  - ./db/database.sql:/docker-entrypoint-initdb.d/database.sql
     networks:
       - default
 

@@ -1,7 +1,7 @@
-FROM mysql:8.0
+FROM mariadb:latest
 
-COPY database.sql docker-entrypoint-initdb.d/database.sql
+COPY database.sql docker-entrypoint-initdb.d/
 # Setup the custom configuration
 ADD mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 
-ENTRYPOINT service mysql restart && /bin/bash
+#ENTRYPOINT service mysql restart && /bin/bash
