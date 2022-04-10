@@ -161,7 +161,11 @@ jobs:
 # bypass error code for testing all possible url to do sast
       - name: ZAP Scan
         run: |
+          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:8080 || true 
           sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:8080/CRMMVC/ || true 
+          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:5000/CRMMVC/ || true 
+          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://127.0.0.1:8080 || true
           sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://127.0.0.1:8080/CRMMVC/ || true
+          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://127.0.0.1:5000/CRMMVC/ || true          
           sudo python extra/get_ip.py || true
         
