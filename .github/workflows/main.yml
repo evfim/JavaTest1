@@ -23,15 +23,15 @@ jobs:
           mvn clean package
       - name: Build docker-compose
         run: docker-compose -f docker-compose.yml up --build -d
-      - name: Database check
-        run: |
-          docker ps
-          sudo ps wwaux | grep -i sql
-          mysql --host 127.0.0.1 --port 3306 -p12345678 -u root
+#      - name: Database check
+#        run: |
+#          docker ps
+#          sudo ps wwaux | grep -i sql
+#          mysql --host 127.0.0.1 --port 3306 -p12345678 -u root
           
-          SHOW global VARIABLES LIKE "wait_timeout";
-      - name: State check
-        run: docker ps
+#          SHOW global VARIABLES LIKE "wait_timeout";
+#      - name: State check
+#        run: docker ps
           
   #test
   sca:
