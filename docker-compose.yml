@@ -31,3 +31,7 @@ services:
 volumes:
   db:
     driver: local
+
+networks:
+  default:
+    name: default_network
