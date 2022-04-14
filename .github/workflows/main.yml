@@ -149,7 +149,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./
-          file: .Dockerfile
+          file: Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: bluekatkirbyfi/2022-java-web-app:latest
