@@ -118,7 +118,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: sudo docker pull tomcat
+      - run: |
+          sudo docker pull tomcat
+          dockle --timeout 600s
       - uses: hands-lab/dockle-action@v1
         with:
           image: tomcat
