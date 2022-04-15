@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <html>
 <head>
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://maxcdn.bootstrapcdn.com https://ajax.googleapis.com ">
 
 	<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
