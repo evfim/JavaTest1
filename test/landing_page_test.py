@@ -18,6 +18,8 @@ def test_login_page():
     session = requests.session()
     login = session.get("http://127.0.0.1:8080/CRMMVC/login").text
     soup = BeautifulSoup(login, "html.parser")
+    print("soup:")
+    print (soup)
     fault_text = soup.find_all(text=True)
     str_match = [s for s in fault_text if s.__contains__("Hello")]
     str_match=' '.join(map(str,str_match))
