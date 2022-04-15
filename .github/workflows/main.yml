@@ -170,12 +170,15 @@ jobs:
           mvn clean package -DskipTests
       - name: Build docker-compose
         run: docker-compose -f docker-compose.yml up --build -d
-      - name: check docker image name
-        run: docker ps -a
+#      - name: check docker image name
+#        run: docker ps -a
     
       - uses: hands-lab/dockle-action@v1
         with:
-          image: tomcat
+          image: 2022-group3-crmmvc_app
+      - uses: hands-lab/dockle-action@v1
+        with:
+          image: 2022-group3-crmmvc_db
           
   deployment: 
     needs: image_scan
