@@ -28,7 +28,7 @@
 				<form:input type="text" id="username" path="username" class="form-control" placeholder="Username"></form:input>
 				<form:input type="password" id="password" path="password" class="form-control" placeholder="Password"></form:input>
 				<input type="submit" id="submit" class="btn btn-primary form-control" value="Login" />
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+					<sec:csrfInput />
 				</div>
 			</form:form>
 		</div>
