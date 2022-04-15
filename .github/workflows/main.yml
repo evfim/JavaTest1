@@ -53,8 +53,8 @@ jobs:
           path: AppInspectorResults.json
 
       - name: Run Maven Install
-          run: |
-            sudo apt install maven
+        run: |
+          sudo apt install maven
       - name: Snyk Maven Dependencies Scan
         # You may pin to the exact commit or the version.
         uses: snyk/actions/maven@master
