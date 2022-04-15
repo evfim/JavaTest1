@@ -225,10 +225,10 @@ jobs:
           mkdir -p logs/
           sudo docker run --net=default_network -t owasp/zap2docker-stable zap-baseline.py -t http://app:8080/ > logs/owasp.log || true
           
-          uses: actions/upload-artifact@v2
-                  with:
-                     name: owaspzap
-                     path: logs/owasp.log
+      - uses: actions/upload-artifact@v2
+        with:
+             name: owaspzap
+             path: logs/owasp.log
 #          docker run -u zap -p 8090:8090 -i owasp/zap2docker-stable zap.sh -daemon -host 0.0.0.0 -port 8090
 #          docker ps
 #          python test/landing_page_test.py
