@@ -20,7 +20,7 @@ jobs:
       - name: Run Maven
         run: |
           sudo apt install maven
-          mvn clean package
+          mvn clean package -DskipTests
       - name: Build docker-compose
         run: docker-compose -f docker-compose.yml up --build -d
 #      - name: Database check
@@ -88,10 +88,10 @@ jobs:
 #to put commands to build application, install relevant packages for testing and run testings below
       
 
-      - name: Run Maven
+      - name: Run Maven and JUnit Testing
         run: |
           sudo apt install maven
-          mvn clean package
+          mvn clean test package
       
       - name: Build Image for testing
         run: docker-compose -f docker-compose.yml up --build -d
@@ -164,7 +164,7 @@ jobs:
       - name: Run Maven
         run: |
           sudo apt install maven
-          mvn clean package
+          mvn clean package -DskipTests
       - name: Build docker-compose
         run: docker-compose -f docker-compose.yml up --build -d
            

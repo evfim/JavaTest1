@@ -22,9 +22,9 @@ public class Post implements WithFile{
 	public Post(int id, String title, String imagePath, String content, Date publishToDate, Status status) {
 		super();
 		this.id = id;
-		this.title = title;
+		this.title = this.stripXSS(title);
 		this.imagePath = imagePath;
-		this.content = content;
+		this.content = this.stripXSS(content);
 		this.publishToDate = publishToDate;
 		this.status = status;
 	}
