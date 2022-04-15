@@ -93,13 +93,26 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 #to put commands to build application, install relevant packages for testing and run testings below
-      
 
-      - name: Run Maven and JUnit Testing
+      - name: Install Maven
         run: |
           sudo apt install maven
-          mvn clean test package
-      
+      - name: Run Maven JUnit Testing
+        run: |
+          mvn test
+
+  functional_testing:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download WAR Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: CRMMVC.war
+          path: ./target/
+
       - name: Build Image for testing
         run: docker-compose -f docker-compose.yml up --build -d
 
@@ -115,8 +128,7 @@ jobs:
            
       - name: Run Landing and Login page render test
         run: python test/landing_page_test.py
-         
-           
+
       - name: Run functional login test
         run: python test/functional_test_login.py
       
