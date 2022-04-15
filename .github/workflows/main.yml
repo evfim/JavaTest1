@@ -68,6 +68,11 @@ jobs:
           # Output a snyk.json file with results if running the test command
           json: snyk-sca.json # optional
 
+      - uses: actions/upload-artifact@v2
+        with:
+         name: sca-logs
+         path: .
+
   sast:
     needs: build
     runs-on: ubuntu-latest
