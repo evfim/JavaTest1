@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 
 import jakarta.activation.FileTypeMap;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -226,7 +227,8 @@ public class PostController {
 			
 			try {
 				byte byteImage[] = fileImage.getBytes();
-				BufferedOutputStream bOut=new BufferedOutputStream(new FileOutputStream(strFilepath + strFilename));
+				BufferedOutputStream bOut=new BufferedOutputStream(
+						new FileOutputStream(strFilepath + FilenameUtils.getName(strFilename)));
 				bOut.write(byteImage);
 				bOut.flush();
 				bOut.close();
@@ -313,7 +315,7 @@ public class PostController {
 			throws IOException {
 		
 		String strFilepath = context.getRealPath("/upload/");
-	    File fileImage = new File(strFilepath + filename + "." + ext);
+	    File fileImage = new File(strFilepath + FilenameUtils.getName(filename + "." + ext));
 
 	    return ResponseEntity.ok()
 	    		.contentType(MediaType.valueOf(FileTypeMap.getDefaultFileTypeMap().getContentType(fileImage)))
