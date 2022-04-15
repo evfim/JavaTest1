@@ -133,7 +133,7 @@ jobs:
         run: python test/functional_test_login.py
       
   image_scan:
-    needs: [sca, sast, unit_testing]
+    needs: [sca, sast, unit_testing, functional_testing]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
