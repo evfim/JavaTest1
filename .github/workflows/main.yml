@@ -29,16 +29,6 @@ jobs:
         with:
           name: CRMMVC.war
           path: ./target/CRMMVC.war
-
-#      - name: Database check
-#        run: |
-#          docker ps
-#          sudo ps wwaux | grep -i sql
-#          mysql --host 127.0.0.1 --port 3306 -p12345678 -u root
-          
-#          SHOW global VARIABLES LIKE "wait_timeout";
-#      - name: State check
-#        run: docker ps
           
   sca:
     needs: build
@@ -114,8 +104,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-#to put commands to build application, install relevant packages for testing and run testings below
-
       - name: Install Maven
         run: |
           sudo apt install maven
@@ -157,11 +145,6 @@ jobs:
   image_scan:
     needs: [sca, sast, unit_testing, functional_testing]
     runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v2
-#      - run: |
-#          sudo docker pull tomcat
-#          docker ps -a        
     steps:
       - uses: actions/checkout@v2
       - name: Run Maven
@@ -169,10 +152,7 @@ jobs:
           sudo apt install maven
           mvn clean package -DskipTests
       - name: Build docker-compose
-        run: docker-compose -f docker-compose.yml up --build -d
-#      - name: check docker image name
-#        run: docker ps -a
-    
+        run: docker-compose -f docker-compose.yml up --build -d    
       - uses: hands-lab/dockle-action@v1
         with:
           image: 2022-group3-crmmvc_app
@@ -214,11 +194,9 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: bluekatkirbyfi/2022-java-web-app:latest
-#########################put commands for deployment############################
 
   dast:
-#    needs: deployment
-#remove above line one pipeline all green
+    needs: deployment
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -228,23 +206,6 @@ jobs:
           mvn clean package -DskipTests
       - name: Build docker-compose
         run: docker-compose -f docker-compose.yml up --build -d
-           
-#      - name: ZAP Scan
-#        run: python extra/get_ip.py
-# Commented python script to run OWASP ZAP, added github workflow for OWASP ZAP
-#      - name: ZAP Scan
-#        uses: zaproxy/action-baseline@v0.6.1
-#        with:
-#          target: 'http://127.0.0.1:8080/CRMMVC/'
-# Commented basic owasp zap workflow, added advanced owasp zap workflow
-#      - name: ZAP Scan
-#        uses: zaproxy/action-baseline@v0.6.1
-#        with:
-#          token: ${{ secrets.GITHUB_TOKEN }}
-#          docker_name: 'owasp/zap2docker-stable'
-#          target: 'http://localhost:8080'
-#          cmd_options: '-a'
-# bypass error code for testing all possible url to do sast
 
       - name: Set up Python 3.6
         uses: actions/setup-python@v1
@@ -265,15 +226,4 @@ jobs:
         with:
              name: owaspzap
              path: logs/owasp.log
-#          docker run -u zap -p 8090:8090 -i owasp/zap2docker-stable zap.sh -daemon -host 0.0.0.0 -port 8090
-#          docker ps
-#          python test/landing_page_test.py
-#          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:8080 || true 
-#          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:8080/CRMMVC/ || true 
-#          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:5000/CRMMVC/ || true 
-#          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://127.0.0.1:8080 || true
-#          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://127.0.0.1:8080/CRMMVC/ || true
-#          sudo docker run -t owasp/zap2docker-stable zap-baseline.py -t http://127.0.0.1:5000/CRMMVC/ || true          
-#          sudo python extra/get_ip.py || true
-
         
