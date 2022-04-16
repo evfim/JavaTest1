@@ -16,7 +16,7 @@
 
     <filter>
         <filter-name>addHeaderFilter</filter-name>
-        <filter-class>com.mypackage.AddHeaderFilter</filter-class>
+        <filter-class>sg.lam.AddHeaderFilter</filter-class>
     </filter>
 
     <filter-mapping>
