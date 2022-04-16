@@ -7,14 +7,14 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CRMMVC Maven Webapp</name>
 	<!--<url>http://maven.apache.org</url>-->
-	<repositories>
-		<!-- ... possibly other repository elements ... -->
+	<!-- <repositories>
+		.. possibly other repository elements ...
 		<repository>
 			<id>spring-milestone</id>
 			<name>Spring Milestone Repository</name>
 			<url>https://repo.spring.io/milestone</url>
 		</repository>
-	</repositories>
+	</repositories> -->
 	<dependencies>
 		<!--<dependency>
 			<groupId>junit</groupId>
@@ -132,8 +132,8 @@
 
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.web</artifactId>
-			<version>3.2.2.RELEASE</version>
+			<artifactId>spring-web</artifactId>
+			<version>5.3.19</version>
 		</dependency>
 	</dependencies>
 	<build>
