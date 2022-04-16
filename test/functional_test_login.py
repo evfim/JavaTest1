@@ -16,7 +16,7 @@ def test_login_1():
     with requests.Session() as session:
          post = session.post(POST_LOGIN_URL, data=payload)
          soup = BeautifulSoup(post.text, "html.parser")
-
+    print(soup)
     fault_text = soup.find_all(text=True)
     assert "Posts" in fault_text
 
@@ -39,7 +39,7 @@ def test_login_2():
     with requests.Session() as session:
          post = session.post(POST_LOGIN_URL, data=payload)
          soup = BeautifulSoup(post.text, "html.parser")
-
+    print(soup)
     fault_text = soup.find_all(text=True)
     str_match = [s for s in fault_text if s.__contains__("Wrong Login!")]
     str_match=' '.join(map(str,str_match))
