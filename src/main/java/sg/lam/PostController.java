@@ -227,11 +227,8 @@ public class PostController {
 			
 			try {
 				byte byteImage[] = fileImage.getBytes();
-				String cleanFilename = strFilename.replaceAll("\\.\\.", "")
-						.replaceAll("/", "")
-						.replaceAll("\\\\", "");
 				BufferedOutputStream bOut=new BufferedOutputStream(
-						new FileOutputStream(strFilepath + FilenameUtils.getName(cleanFilename)));
+						new FileOutputStream(strFilepath + FilenameUtils.getName(strFilename)));
 				bOut.write(byteImage);
 				bOut.flush();
 				bOut.close();
@@ -318,13 +315,7 @@ public class PostController {
 			throws IOException {
 		
 		String strFilepath = context.getRealPath("/upload/");
-		String cleanExt = ext.replaceAll("\\.", "")
-				.replaceAll("/", "")
-				.replaceAll("\\\\", "");
-		String cleanFilename = filename.replaceAll("\\.", "")
-				.replaceAll("/", "")
-				.replaceAll("\\\\", "");
-	    File fileImage = new File(strFilepath + FilenameUtils.getName(cleanFilename + "." + cleanExt));
+	    File fileImage = new File(strFilepath + FilenameUtils.getName(filename + "." + ext));
 
 	    return ResponseEntity.ok()
 	    		.contentType(MediaType.valueOf(FileTypeMap.getDefaultFileTypeMap().getContentType(fileImage)))
