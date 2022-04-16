@@ -20,26 +20,19 @@ public class LoginController {
 
 	@RequestMapping(value = "/")
 	public ModelAndView home(HttpServletRequest request, HttpServletResponse response) {
-		// Set Security Header
-		setSecurityHeaders(response);
 		return new ModelAndView("home");
 	}
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView show(HttpServletRequest request, HttpServletResponse response) {
-		// Set Security Header
-		setSecurityHeaders(response);
         ModelAndView mv = new ModelAndView("login", "login", new Login());
-        mv.addObject("strDisplayMsg", "none");
+        mv.addObject("strDisplayMsg", "msg-none");
         return mv;
     }
 	
 	@RequestMapping(value = "/login2", method = RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response,
 					  @ModelAttribute("login") Login login, BindingResult result) {
-
-		// Set Security Header
-		setSecurityHeaders(response);
 		
 		ModelAndView mv = null;
 		
@@ -55,14 +48,10 @@ public class LoginController {
 			
 			mv = new ModelAndView("login");
 			mv.addObject("strMsg", "Wrong Login!");
-			mv.addObject("strDisplayMsg", "show");
+			mv.addObject("strDisplayMsg", ".msg-show");
 		}
 		
 		return mv;
-	}
-
-	private void setSecurityHeaders(HttpServletResponse response) {
-		response.addHeader("Content-Security-Policy", "default-src 'self'");
 	}
 
 }

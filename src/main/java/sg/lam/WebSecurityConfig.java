@@ -19,7 +19,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.headers(headers -> headers
                 .contentSecurityPolicy(csp -> csp
-                        .policyDirectives("default-src 'self'")
+                        .policyDirectives("default-src 'self' " +
+                                "https://maxcdn.bootstrapcdn.com https://ajax.googleapis.com; " +
+                                "frame-ancestors 'none';")
                 )
         );
     }
