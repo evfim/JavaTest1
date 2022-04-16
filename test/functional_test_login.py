@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 # login test cases
 def test_login_1():
-
+    GET_LOGIN_URL = 'http://127.0.0.1:8080/CRMMVC/login'
     POST_LOGIN_URL = 'http://127.0.0.1:8080/CRMMVC/login2'
     REQUEST_URL = 'http://127.0.0.1:8080/CRMMVC/posts'
 
@@ -14,6 +14,12 @@ def test_login_1():
     }
     
     with requests.Session() as session:
+         get = session.get(GET_LOGIN_URL)
+         soup0 = BeautifulSoup(get.text, "html.parser")
+         token = soup0.find('input', {'name': '_csrf'})['value']
+         payload['_csrf'] = token
+         print("_csrf:", token)
+
          post = session.post(POST_LOGIN_URL, data=payload)
          soup = BeautifulSoup(post.text, "html.parser")
     print(soup)
@@ -28,6 +34,8 @@ def test_login_2():
 #    fault_text = soup.find_all(text=True)
 #    str_match = [s for s in fault_text if s.__contains__("Posts")]  
 #    str_match=' '.join(map(str,str_match))
+
+    GET_LOGIN_URL = 'http://127.0.0.1:8080/CRMMVC/login'
     POST_LOGIN_URL = 'http://127.0.0.1:8080/CRMMVC/login2'
     REQUEST_URL = 'http://127.0.0.1:8080/CRMMVC/posts'
 
@@ -37,6 +45,12 @@ def test_login_2():
     }
 
     with requests.Session() as session:
+         get = session.get(GET_LOGIN_URL)
+         soup0 = BeautifulSoup(get.text, "html.parser")
+         token = soup0.find('input', {'name': '_csrf'})['value']
+         payload['_csrf'] = token
+         print("_csrf:", token)
+
          post = session.post(POST_LOGIN_URL, data=payload)
          soup = BeautifulSoup(post.text, "html.parser")
     print(soup)
@@ -56,6 +70,7 @@ def test_login_3():
 #    fault_text = soup.find_all(text=True)
 #    str_match = [s for s in fault_text if s.__contains__("Posts")]
 #    str_match=' '.join(map(str,str_match))
+    GET_LOGIN_URL = 'http://127.0.0.1:8080/CRMMVC/login'
     POST_LOGIN_URL = 'http://127.0.0.1:8080/CRMMVC/login2'
     REQUEST_URL = 'http://127.0.0.1:8080/CRMMVC/posts'
 
@@ -65,6 +80,12 @@ def test_login_3():
     }
 
     with requests.Session() as session:
+         get = session.get(GET_LOGIN_URL)
+         soup0 = BeautifulSoup(get.text, "html.parser")
+         token = soup0.find('input', {'name': '_csrf'})['value']
+         payload['_csrf'] = token
+         print("_csrf:", token)
+
          post = session.post(POST_LOGIN_URL, data=payload)
          soup = BeautifulSoup(post.text, "html.parser")
 
