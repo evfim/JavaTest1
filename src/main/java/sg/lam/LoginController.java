@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,9 +17,18 @@ public class LoginController {
 	
 	@Autowired
 	UserService userService;
-	
+
+	@RequestMapping(value = "/")
+	public ModelAndView home(HttpServletRequest request, HttpServletResponse response) {
+		// Set Security Header
+		setSecurityHeaders(response);
+		return new ModelAndView("home");
+	}
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView show() {
+    public ModelAndView show(HttpServletRequest request, HttpServletResponse response) {
+		// Set Security Header
+		setSecurityHeaders(response);
         ModelAndView mv = new ModelAndView("login", "login", new Login());
         mv.addObject("strDisplayMsg", "none");
         return mv;
@@ -27,6 +37,9 @@ public class LoginController {
 	@RequestMapping(value = "/login2", method = RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response,
 					  @ModelAttribute("login") Login login, BindingResult result) {
+
+		// Set Security Header
+		setSecurityHeaders(response);
 		
 		ModelAndView mv = null;
 		
@@ -46,6 +59,10 @@ public class LoginController {
 		}
 		
 		return mv;
+	}
+
+	private void setSecurityHeaders(HttpServletResponse response) {
+		response.addHeader("Content-Security-Policy", "default-src 'self'");
 	}
 
 }
