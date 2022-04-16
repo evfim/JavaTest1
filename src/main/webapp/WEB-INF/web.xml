@@ -13,4 +13,15 @@
   	<servlet-name>main</servlet-name>
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
+
+    <filter>
+        <filter-name>addHeaderFilter</filter-name>
+        <filter-class>com.mypackage.AddHeaderFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>addHeaderFilter</filter-name>
+        <url-pattern>/CRMMVC/*</url-pattern>
+    </filter-mapping>
+
 </web-app>
