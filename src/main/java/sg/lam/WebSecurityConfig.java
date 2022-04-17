@@ -20,10 +20,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers(headers -> headers
                 .contentSecurityPolicy(csp -> csp
                         .policyDirectives("default-src 'none'; " +
+                                "img-src 'self'; " +
                                 "script-src https://maxcdn.bootstrapcdn.com https://ajax.googleapis.com; " +
                                 "style-src 'self' https://maxcdn.bootstrapcdn.com; " +
                                 "font-src 'self' https://maxcdn.bootstrapcdn.com; " +
                                 "frame-ancestors 'none';")
+                        .and()
+                        .addHeaderWriter(new HeaderWriter() {
+                            @Override
+                            public void writeHeaders(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+                                // Cookie Security Configurations
+                                httpServletResponse.setHeader("Set-Cookie", "locale=en; HttpOnly; SameSite=strict");
+                            }
+                        })
                 )
         );
     }
