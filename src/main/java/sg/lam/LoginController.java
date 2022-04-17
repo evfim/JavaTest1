@@ -43,7 +43,7 @@ public class LoginController {
 			
 			mv = new ModelAndView("login");
 			mv.addObject("strMsg", "Wrong Login!");
-			mv.addObject("strDisplayMsg", ".msg-show");
+			mv.addObject("strDisplayMsg", "msg-show");
 		}
 		
 		return mv;
