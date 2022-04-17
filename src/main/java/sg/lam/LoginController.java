@@ -18,11 +18,6 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(value = "/")
-	public ModelAndView home(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("home");
-	}
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView show(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mv = new ModelAndView("login", "login", new Login());
