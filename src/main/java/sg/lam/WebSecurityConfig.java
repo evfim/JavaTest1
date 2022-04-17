@@ -1,5 +1,6 @@
 package sg.lam;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                             @Override
                             public void writeHeaders(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
                                 // Cookie Security Configurations
-                                addSameSiteCookieAttribute(httpServletResponse);
+                                addCookieSecurityAttributes(httpServletRequest, httpServletResponse);
                             }
                         })
                 )
@@ -43,19 +44,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * REF:https://stackoverflow.com/questions/42998367/same-site-flag-for-session-cookie-in-spring-security
      * @param response
      */
-    private void addSameSiteCookieAttribute(HttpServletResponse response) {
+    private void addCookieSecurityAttributes(HttpServletRequest httpServletRequest, HttpServletResponse response) {
+        // Prepare cookie flags
+        Collection<String> arrFlags = new ArrayList<>();
+        arrFlags.add("HttpOnly");
+        arrFlags.add("SameSite=Strict");
+        arrFlags.add("Path=" + httpServletRequest.getContextPath());
+        arrFlags.add("Domain=" + httpServletRequest.getServerName());
+        String flags = String.join(";", arrFlags);
+
         Collection<String> headers = response.getHeaders(HttpHeaders.SET_COOKIE);
         boolean firstHeader = true;
         // there can be multiple Set-Cookie attributes
         for (String header : headers) {
             if (firstHeader) {
                 response.setHeader(HttpHeaders.SET_COOKIE,
-                        String.format("%s; %s", header, "HttpOnly; SameSite=Strict"));
+                        String.format("%s; %s", header, flags));
                 firstHeader = false;
                 continue;
             }
             response.addHeader(HttpHeaders.SET_COOKIE,
-                    String.format("%s; %s", header, "HttpOnly; SameSite=Strict"));
+                    String.format("%s; %s", header, flags));
         }
     }
 }
