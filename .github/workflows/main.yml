@@ -186,7 +186,7 @@ jobs:
         with:
           image: 2022-group3-crmmvc_app
           report-format: json
-          report-name: docker-app
+          report-name: dockle-app
           
       - name: Run DB Container Scan
         uses: erzz/dockle-action@v1.1.1
@@ -194,7 +194,7 @@ jobs:
         with:
           image: 2022-group3-crmmvc_db
           report-format: json
-          report-name: docker-db
+          report-name: dockle-db
           
       - name: Upload Container Scan Logs
         uses: actions/upload-artifact@v2
@@ -202,7 +202,7 @@ jobs:
           name: Dockle Reports
           path: |
             dockle-app.json
-            docker-db.json
+            dockle-db.json
           
   deployment: 
     needs: image_scan
