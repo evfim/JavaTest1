@@ -45,6 +45,7 @@ jobs:
       - name: Run Maven Install
         run: |
           sudo apt install maven
+          
       - name: Snyk Maven Dependencies Scan
         # You may pin to the exact commit or the version.
         uses: snyk/actions/maven@master
@@ -56,12 +57,12 @@ jobs:
           # Additional arguments to pass to Snyk
           #args: --sarif-file-output=snyk.sarif # optional
           # Output a snyk.json file with results if running the test command
-          json: snyk-sca.json # optional
+          json: true # optional
 
       - uses: actions/upload-artifact@v2
         with:
-         name: sca-logs
-         path: .
+         name: snyk-sca
+         path: snyk.json
 
   sast:
     needs: build
@@ -109,14 +110,16 @@ jobs:
           # Additional arguments to pass to Snyk
           args: --sarif-file-output=snyk.sarif # optional
           # Output a snyk.json file with results if running the test command
-          json: snyk.json # optional
+          json: true # optional
+          
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: snyk.sarif
+          
       - uses: actions/upload-artifact@v3
         with:
-          name: snyk.json
+          name: snyk-sast
           path: snyk.json
           
   unit_testing:
@@ -167,21 +170,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      
       - name: Download WAR Artifact
         uses: actions/download-artifact@v2
         with:
           name: CRMMVC.war
           path: ./target/
+          
       - name: Build docker-compose
         run: docker-compose -f docker-compose.yml up --build -d
+        
       - name: Run App Container Scan
         uses: hands-lab/dockle-action@v1
         with:
           image: 2022-group3-crmmvc_app
+          report-format: json
+          report-name: docker-app
+          
       - name: Run DB Container Scan
         uses: hands-lab/dockle-action@v1
         with:
           image: 2022-group3-crmmvc_db
+          report-format: json
+          report-name: docker-db
+          
+      - name: Upload Container Scan Logs
+        uses: actions/upload-artifact@v2
+        with:
+          name: Dockle Reports
+          path: |
+            dockle-app.json
+            docker-db.json
           
   deployment: 
     needs: image_scan
