@@ -93,7 +93,32 @@ jobs:
         with:
           name: codeql.zip
           path: /home/runner/work/_temp/codeql_databases/codeql.zip
-        
+          
+      - name: Run Maven Install
+        run: |
+          sudo apt install maven
+          
+      - name: Snyk Code Scan
+        # You may pin to the exact commit or the version.
+        uses: snyk/actions/maven@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: code test # optional, default is test
+          # Additional arguments to pass to Snyk
+          args: --sarif-file-output=snyk.sarif # optional
+          # Output a snyk.json file with results if running the test command
+          json: snyk.json # optional
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: snyk.sarif
+      - uses: actions/upload-artifact@v3
+        with:
+          name: snyk.json
+          path: snyk.json
+          
   unit_testing:
     needs: build
     runs-on: ubuntu-latest
