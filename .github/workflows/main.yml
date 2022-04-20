@@ -92,8 +92,8 @@ jobs:
         uses: github/codeql-action/analyze@v1
       - uses: actions/upload-artifact@v2
         with:
-          name: codeql.zip
-          path: /home/runner/work/_temp/codeql_databases/codeql.zip
+          name: codeql_database
+          path: /home/runner/work/_temp/codeql_databases/java.zip
           
       - name: Run Maven Install
         run: |
