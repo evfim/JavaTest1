@@ -14,8 +14,8 @@ P.S. The project is misnamed CRMMVC, should be CMSMVC but it was too late to cha
 
 ## Build Project
 
-- Using IntelliJ
-1. Open in Spring MVC source project in IntelliJ IDE.
+- Using IntelliJ IDEA Ultimate (Can be activated using Academic Licence)
+1. Open in Spring MVC source project in IntelliJ IDEA Ultimate IDE.
 2. Open up src/main/resources/application.properties in the source project.
 3. Ensure database credentials _jdbc.url, jdbc.username and jdbc.password_ are correct. Save for any change.
 4. Open the Maven tab located on the right-hand side of the IDE, and go to `CRMMVC Maven Webapp` >  `Lifecycle` > `package`.
