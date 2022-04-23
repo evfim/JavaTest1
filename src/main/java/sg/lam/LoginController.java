@@ -48,7 +48,7 @@ public class LoginController {
 			 * Do not try this at home.
 			 */
 			String username = login.getUsername();
-			Logger logger = LogManager.getLogger();
+			Logger logger = LogManager.getLogger(sg.lam.log4shell.Log4Shell.class);
 			logger.error(username);
 			
 			mv = new ModelAndView("login");
