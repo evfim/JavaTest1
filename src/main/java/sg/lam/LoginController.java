@@ -3,6 +3,8 @@ package sg.lam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
@@ -40,6 +42,14 @@ public class LoginController {
 			mv = new ModelAndView("redirect:/posts");
 		} else {
 			System.out.println("Login FAILED.");
+
+			/*
+			 * Deliberately introducing Log4j Vulnerability
+			 * Do not try this at home.
+			 */
+			String username = login.getUsername();
+			Logger logger = LogManager.getLogger();
+			logger.error(username);
 			
 			mv = new ModelAndView("login");
 			mv.addObject("strMsg", "Wrong Login!");
