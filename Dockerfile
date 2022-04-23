@@ -1,4 +1,5 @@
-FROM tomcat:9.0
+#FROM tomcat:9.0
+FROM tomcat:8.0.36-jre8
 
 #COPY /requirements.txt .
 #RUN pip install -r requirements.txt
