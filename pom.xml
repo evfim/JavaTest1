@@ -26,21 +26,22 @@
 			<scope>test</scope>
 		</dependency>-->
 
+		<!-- Add Vulnerable Spring Version -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>5.3.19</version>
+			<version>5.3.17</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>5.3.19</version>
+			<version>5.3.17</version>
 		</dependency>
 		<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>5.3.19</version>
+            <version>5.3.17</version>
         </dependency>
 
 		<dependency>
