@@ -66,7 +66,7 @@ pwd
 
 # Run Maven
 echo "[+]" $( date +%T ) "Run Maven Package"
-cd /home/vagrant/crmmvc && mvn clean package >/dev/null 2>&1
+cd /home/vagrant/crmmvc && sudo mvn clean package -DskipTests >/dev/null 2>&1
 
 # Docker compose
 echo "[+]" $( date +%T ) "Run Docker Compose"
