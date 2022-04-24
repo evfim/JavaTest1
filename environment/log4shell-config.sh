@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Setup Log4Shell POC ..."
+
 # Clone POC Repo
 echo "[+]" $( date +%T ) "Clone POC Repo"
 mkdir -p -m a=rwx /home/vagrant/log4shell #>/dev/null 2>&1
