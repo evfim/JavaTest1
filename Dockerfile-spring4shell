@@ -1,5 +1,6 @@
 #FROM tomcat:9.0
-FROM tomcat:8.0.36-jre8
+#FROM tomcat:8.0.36-jre8
+FROM lunasec/tomcat-9.0.59-jdk11
 
 COPY /target/CRMMVC.war /usr/local/tomcat/webapps/
 #COPY /target/CRMMVC.war /var/lib/tomcat9/webapps/
