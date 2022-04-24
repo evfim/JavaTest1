@@ -4,6 +4,18 @@ This is a simple Spring MVC 5.x application project built with Maven, incorporat
 
 P.S. The project is misnamed CRMMVC, should be CMSMVC but it was too late to change :)
 
+## :exclamation: Deliberately Vulnerable Application (Do not use in production environment)
+This repository has been forked and configure to demonstrate two Java EE based vulnerabilities:
+### 1. Log4Shell (CVE-2021-44228)
+- Log4j dependency adding into pom.xml using vulnerable version 2.14.1.
+- Injected vulnerable code into `/login2` routing in LoginController.java
+- Docker container using Tomcat 8.x on Java 8 image `tomcat:8.0.36-jre8`.
+
+### 2. Spring4Shell (CVE-2022-22965)
+- Spring Security filtering disabled in web.xml.
+- Spring Framework downgraded to vulnerable version 5.3.17 in pom.xml.
+- Docker container using Tomcat 9.x on Java 11 image `tomcat-9.0.59-jdk11`.
+
 ## Setup Database
 
 1. Connect to MySQL Server 8.x or MariaDB on MySQL Workbench using DBAdmin User database credentials located in db/db.env.
