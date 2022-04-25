@@ -8,7 +8,7 @@ mkdir -p -m a=rwx /home/vagrant/spring4shell #>/dev/null 2>&1
 git clone https://github.com/maxxedev/spring4shell.git /home/vagrant/spring4shell #>/dev/null 2>&1
 cd /home/vagrant/spring4shell
 
-# Run NetCat Listener
+# Run Shell Creation Exploit
 #./spring4shell-exploit.sh http://192.168.56.10:8081 CRMMVC/login2
 
 # Test Shell Created
