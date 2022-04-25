@@ -10,7 +10,7 @@ git clone https://github.com/kozmer/log4j-shell-poc.git /home/vagrant/log4shell 
 # Copy files
 echo "[+]" $( date +%T ) "Copy POC Files"
 sudo curl --output /home/vagrant/log4shell/jdk-8u201-linux-x64.tar.gz https://repo.huaweicloud.com/java/jdk/8u201-b09/jdk-8u201-linux-x64.tar.gz
-sudo cp /vagrant/environment/poc-log4shell.py /home/vagrant/log4shell/
+sudo cp /vagrant/poc-log4shell.py /home/vagrant/log4shell/
 cd /home/vagrant/log4shell && tar -xf jdk-8u201-linux-x64.tar.gz
 
 # Install Python 3 dependencies
