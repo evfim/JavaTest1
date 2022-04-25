@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -59,4 +61,17 @@ public class LoginController {
 		return mv;
 	}
 
+	/**
+	 * Migitation Code for Spring4Shell
+	 */
+	/*
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		// This code protects Spring Core from a "Remote Code Execution" attack (dubbed "Spring4Shell").
+		// By applying this mitigation, you prevent the "Class Loader Manipulation" attack vector from firing.
+		// For more details, see this post: https://www.lunasec.io/docs/blog/spring-rce-vulnerabilities/
+		String[] blackList = { "class.*", "Class.*", "*.class.*", ".*Class.*" };
+		binder.setDisallowedFields(blackList);
+	}
+	*/
 }
