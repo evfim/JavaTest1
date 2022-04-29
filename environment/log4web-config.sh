@@ -8,8 +8,8 @@ mkdir -p -m a=rwx /home/vagrant/log4web #>/dev/null 2>&1
 
 # Copy files
 echo "[+]" $( date +%T ) "Copy POC Files"
-sudo curl --output /home/vagrant/log4shell/jdk-8u201-linux-x64.tar.gz https://repo.huaweicloud.com/java/jdk/8u201-b09/jdk-8u201-linux-x64.tar.gz
-sudo cp -r /vagrant/log4web /home/vagrant/log4web
+sudo curl --output /home/vagrant/log4web/jdk-8u201-linux-x64.tar.gz https://repo.huaweicloud.com/java/jdk/8u201-b09/jdk-8u201-linux-x64.tar.gz
+sudo cp -r /vagrant/log4web/. /home/vagrant/log4web/
 cd /home/vagrant/log4web && tar -xf jdk-8u201-linux-x64.tar.gz
 
 # Install Python 3 dependencies

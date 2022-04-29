@@ -16,7 +16,19 @@ This repository has been forked and configure to demonstrate two Java EE based v
 - Spring Framework downgraded to vulnerable version 5.3.17 in pom.xml.
 - Docker container using Tomcat 9.x on Java 11 image `tomcat-9.0.59-jdk11`.
 
+## Provisioning POC using Vagrant Up for VirtualBox
+We use Vagrant for provisioning of VirtualBox virtual an attacker and victim server machine for the purpose of this POC.
+Internally, the server VM uses Docker technology to spin up containers that binds to the respective port on the server host.
+
 ![](environment/vagrant.PNG)
+1. In terminal, change directory to `environment/`.
+2. Ensure Vagrant and Virtualbox is installed (See https://www.vagrantup.com/downloads).
+3. Run `vagrant up`in terminal.
+
+  ```
+  $ cd ~/crmmvc/environment/
+  $ vagrant up
+  ```
 
 ## Setup Database
 
@@ -39,7 +51,7 @@ This repository has been forked and configure to demonstrate two Java EE based v
 1. Ensure Maven is installed in the system and added into System Environmental PATH (Refer to https://maven.apache.org/install.html).
 2. In the terminal, change the working directory to <Project Root>.
   ```
-  $ cd ~/2022-group3-crmmvc/
+  $ cd ~/crmmvc/
   ```
 3. Run Maven to clean and package the project into a web archive. CRMMVC.war should appear under `target/` directory of the project root.
   ```
@@ -60,7 +72,7 @@ This repository has been forked and configure to demonstrate two Java EE based v
 1. Ensure Docker is installed in the system. See https://docs.docker.com/get-docker/ for details.
 2. In the terminal, change the working directory to <Project Root>, then run Docker Compose.
   ```
-  $ cd ~/2022-group3-crmmvc/
+  $ cd ~/crmmvc/
   $ docker-compose up --build
   ```
 

