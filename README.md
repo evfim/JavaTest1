@@ -16,6 +16,8 @@ This repository has been forked and configure to demonstrate two Java EE based v
 - Spring Framework downgraded to vulnerable version 5.3.17 in pom.xml.
 - Docker container using Tomcat 9.x on Java 11 image `tomcat-9.0.59-jdk11`.
 
+![](environment/vagrant.PNG)
+
 ## Setup Database
 
 1. Connect to MySQL Server 8.x or MariaDB on MySQL Workbench using DBAdmin User database credentials located in db/db.env.
