@@ -1,4 +1,6 @@
 # Content Management System MVC
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fevfim%2FJavaTest1.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fevfim%2FJavaTest1?ref=badge_shield)
+
 
 This is a simple Spring MVC 5.x application project built with Maven, incorporating dependencies such Bootstrap, J2EE and Spring Security Module. Originally built for an interview coding assignment even though the author did not eventually work for that company. Full source code is released under GNU GPL v3.
 
@@ -80,3 +82,7 @@ Internally, the server VM uses Docker technology to spin up containers that bind
   
 1. Copy target/CRMMVC.war to _\<your tomcat directory\>_/webapps/ of your Tomcat server installation. Restart Tomcat server if necessary.
 2. Open up web browser and access the URL http://<hostname>:8080/CRMMVC/.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fevfim%2FJavaTest1.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fevfim%2FJavaTest1?ref=badge_large)
